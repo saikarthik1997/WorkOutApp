@@ -28,6 +28,8 @@ class ExerciseActivity : AppCompatActivity() {
 
     // create a binding variable
     private var binding: ActivityExerciseBinding? = null
+    private var exerciseList:ArrayList<ExerciseModel>?=null
+    private var currentExercisePosition = -1 // Current Position of Exercise.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //inflate the layout
@@ -44,7 +46,7 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.toolbarExercise?.setNavigationOnClickListener {
             onBackPressed()
         }
-
+        exerciseList = Constants.defaultExerciseList()
         setupRestView()
     }
 
@@ -96,6 +98,7 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                currentExercisePosition++
                 // When the 10 seconds will complete this will be executed.
                 // TODO(Step 5 - After completing 10 Seconds of the REST timer start the 30 seconds of Start Exercise View.)
                 // START
