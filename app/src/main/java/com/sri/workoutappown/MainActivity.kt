@@ -1,5 +1,6 @@
 package com.sri.workoutappown
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -12,7 +13,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         binding?.flStart?.setOnClickListener {
-            Toast.makeText(this,"demo click",Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(this, "demo click", Toast.LENGTH_SHORT).show()
+            val intent= Intent(this,ExerciseActivity::class.java)
+            startActivity(intent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }
